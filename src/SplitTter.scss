@@ -1,0 +1,30 @@
+@import 'variables.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Space Mono', monospace;
+}
+
+.wp-full {
+  background-color: $light_grayish_cyan;
+  .title {
+    color: $very_dark_cyan;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 2rem 0;
+    opacity: .8;
+    letter-spacing: 10px;
+    font-size: 1.5rem;
+    span {
+      display: block;
+    }
+  }
+  .formCalculate {
+    width: 100%;
+    background-color: $white;
+    border-radius: 5rem;
+    display: flex;
+  }
+}
