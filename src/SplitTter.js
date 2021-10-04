@@ -6,7 +6,7 @@ function SplitTter() {
   const [bill, setBill] = useState(0);
   const [tip, setTip] = useState(0);
   const [customTip, setCustomTip] = useState(0);
-  const [people, setPeople] = useState(1);
+  const [people, setPeople] = useState(0);
   const [tipByPeople, setTipByPeople] = useState(0);
   const [totalByPeople, setTotalByPeople] = useState(0);
 
@@ -14,16 +14,21 @@ function SplitTter() {
     
     const tipPeople = (bill*tip)/people;
     const totalTipPeople = tipPeople.toFixed(2)
-    setTipByPeople(totalTipPeople);
-
+    
     if(customTip !== 0) {
       const customTipConvert = customTip/100;
       setTip(customTipConvert);
     }
-
+    
     const operationTotalByPeople = ((bill * tip) + parseFloat(bill)) / people;
     var resultTotal = operationTotalByPeople.toFixed(2);
-    setTotalByPeople(resultTotal);
+    if(isNaN(resultTotal) || isNaN(totalTipPeople)) {
+      setTotalByPeople(0);
+      setTipByPeople(0)
+    } else {
+      setTotalByPeople(resultTotal);
+      setTipByPeople(totalTipPeople);
+    }
 
   }, [bill, people, customTip, tip])
 
@@ -36,7 +41,7 @@ function SplitTter() {
     setBill(0);
     setTip(0);
     setCustomTip(0);
-    setPeople(1);
+    setPeople(0);
     setTipByPeople(0);
     setTotalByPeople(0);
   }
@@ -51,7 +56,7 @@ function SplitTter() {
           <h3>Bill</h3>
           <div className="form-input pb-2">
             <div className="dollar icon-dollar"></div>
-            <input className="input-dollar" type="number" value={bill === 0 ? "" : bill} placeholder="0.00" onChange={e => setBill(e.target.value)}/>
+            <input className="input-dollar" type="number" value={bill === 0 ? "" : bill} placeholder="0" onChange={e => setBill(e.target.value)}/>
           </div>
 
           <h3>Select Tip %</h3>
@@ -67,17 +72,17 @@ function SplitTter() {
           <h3>Number of People</h3>
           <div className="form-input pb-2 pb-sm-1">
             <div className="dollar icon-person"></div>
-            <input type="number" placeholder="5" value={people} onChange={e => setPeople(e.target.value)}/>
+            <input type="number" value={people === 0 ? "" : people} placeholder="0" onChange={e => setPeople(e.target.value)}/>
           </div>
         </div>
 
         <div className="wp-total">
           <div className="grid-total">
             <h3 id="title-tip">Tip Amount <span>/ person</span></h3>
-            <input id="input-tip" className="input-total" type="text" placeholder="$0.00" value={"$" + tipByPeople} disabled/>
+            <input id="input-tip" className="input-total" type="text" value={tipByPeople === 0 ? "$0.00" : "$" + tipByPeople} disabled/>
 
             <h3 id="title-person">Total <span>/ person</span></h3>
-            <input id="input-person" className="input-total" type="text" placeholder="$0.00" value={"$" + totalByPeople} disabled/>
+            <input id="input-person" className="input-total" type="text" value={totalByPeople === 0 ? "$0.00" : "$" + totalByPeople} disabled/>
 
             <div id="input-submit">
               <input className="inputSubmit" type="reset" value="Reset" onClick={() =>  handleReset()}/>
