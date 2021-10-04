@@ -7,6 +7,10 @@
   font-family: 'Space Mono', monospace;
 }
 
+.pb-2 {
+  margin-bottom: 1.5rem;
+}
+
 .wp-full {
   background-color: $light_grayish_cyan;
   .title {
@@ -24,7 +28,136 @@
   .formCalculate {
     width: 100%;
     background-color: $white;
-    border-radius: 5rem;
-    display: flex;
+    border-top-left-radius: 1.8rem;
+    border-top-right-radius: 1.8rem;
+    overflow-x: hidden;
+    padding: 2rem 1.5rem;
+    // display: flex;
+    .wp-contentT {
+      padding: 0 .5rem;
+    }
+
+    h3 {
+      font-size: .9rem;
+      padding-bottom: .4rem;
+      color: $dark_grayish_cyan;
+    }
+
+    .form-input {
+      width: 100%;
+      height: fit-content;
+      position: relative;
+      .dollar {
+        position: absolute;
+        top: 50%;
+        font-size: .8rem;
+        transform: translate3d(14px, -8px, 0);
+      }
+      input {
+        font-size: 1.5rem;
+        width: 100%;
+      }
+    }
+    input {
+      border: none;
+      padding: 0 1rem;
+      text-align: right;
+      color: $very_dark_cyan;
+      font-weight: bold;
+      border-radius: .2rem;
+      background-color: $light_grayish_cyan2;
+      &::placeholder {
+        color: $dark_grayish_cyan2;
+      }
+    }
+
+    .wrap-btns {
+      display: flex;
+      flex-wrap: wrap;
+      button {
+        border: none;
+        padding: .2rem 0;
+        color: $white;
+        text-align: center;
+        width: calc(50% - .5rem);
+        background-color: $very_dark_cyan;
+        &:nth-child(1), &:nth-child(3), &:nth-child(5) {
+          margin-right: .5rem;
+        }
+        &:nth-child(2), &:nth-child(4) {
+          margin-left: .5rem;
+        }
+      }
+      .select {
+        background-color: $strong_cyan;
+        color: $very_dark_cyan;
+      }
+      input {
+        width: calc(50% - .5rem);
+        height: auto;
+        font-size: 1.7rem;
+        margin-left: .5rem;
+      }
+      button, input {
+        border-radius: .2rem;
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin-bottom: .8rem;
+      }
+    }
+
+    .wp-total {
+      background-color: $very_dark_cyan;
+      padding: 2rem 1.5rem 1rem;
+      width: 100%;
+      border-radius: 1rem;
+      .grid-total {
+        display: grid;
+        grid-template: 
+          "tip input-tip"
+          "person input-person"
+          "submit submit" / 50%;
+        #title-tip {
+          grid-area: tip;
+        }
+        #input-tip {
+          grid-area: input-tip;
+        }
+        #title-person {
+          grid-area: person;
+        }
+        #input-person {
+          grid-area: input-person;
+        }
+        #input-submit {
+          grid-area: submit;
+          text-align: center;
+          font-weight: bold;
+          text-transform: uppercase;
+          font-size: 1.2rem;
+          padding: .4rem 0;
+          border-radius: 0.4rem;
+          background-color: $strong_cyan;
+          color: $very_dark_cyan;
+        }
+      }
+
+      h3 {
+        color: white;
+        span {
+          display: block;
+          font-size: .8rem;
+          color: $dark_grayish_cyan2;
+        }
+      }
+      .input-total {
+        color: $strong_cyan;
+        font-weight: bold;
+        font-size: 1.5rem;
+        width: 100%;
+        margin-bottom: 2.5rem;
+        background-color: transparent;
+      }
+    }
   }
 }

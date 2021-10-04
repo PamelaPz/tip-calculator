@@ -27,6 +27,10 @@ function SplitTter() {
 
   }, [bill, people, customTip, tip])
 
+  const handleTipSelect = (e) => {
+    setTip(e)
+    setCustomTip(0)
+  }
 
   const handleReset = () => {
     setBill(0);
@@ -43,34 +47,40 @@ function SplitTter() {
       <h1 className="title">Spli <span>TTer</span></h1>
 
       <div className="formCalculate">
-        <div className="" >
+        <div className="wp-contentT" >
           <h3>Bill</h3>
-          <input type="number" name="bill" value={bill} onChange={e => setBill(e.target.value)}/>
-          <br /><br />
-            <h3>Select Tip %</h3>
-              <button onClick={() => setTip(.05)}>5%</button>
-              <button onClick={() => setTip(.10)}>10%</button>
-              <button onClick={() => setTip(.15)}>15%</button>
-              <button onClick={() => setTip(.25)}>25%</button>
-              <button onClick={() => setTip(.50)}>50%</button>
-              <input type="number" value={customTip} onChange={e => setCustomTip(e.target.value)}/>
-          <br />
+          <div className="form-input pb-2">
+            <div className="dollar icon-dollar"></div>
+            <input className="input-dollar" type="number" value={bill === 0 ? "" : bill} placeholder="0.00" onChange={e => setBill(e.target.value)}/>
+          </div>
+
+          <h3>Select Tip %</h3>
+          <div className="wrap-btns pb-2">
+            <button className={tip === .05 ? 'select' : ''} onClick={() => handleTipSelect(.05)}>5%</button>
+            <button className={tip === .10 ? 'select' : ''} onClick={() => handleTipSelect(.10)}>10%</button>
+            <button className={tip === .15 ? 'select' : ''} onClick={() => handleTipSelect(.15)}>15%</button>
+            <button className={tip === .25 ? 'select' : ''} onClick={() => handleTipSelect(.25)}>25%</button>
+            <button className={tip === .50 ? 'select' : ''} onClick={() => handleTipSelect(.50)}>50%</button>
+            <input type="number" value={customTip === 0 ? "Custom" : customTip} placeholder="Custom" onChange={e => setCustomTip(e.target.value)}/>
+          </div>
 
           <h3>Number of People</h3>
-          <input type="number" placeholder="5" value={people} onChange={e => setPeople(e.target.value)}/>
+          <div className="form-input pb-2">
+            <div className="dollar icon-person"></div>
+            <input type="number" placeholder="5" value={people} onChange={e => setPeople(e.target.value)}/>
+          </div>
         </div>
 
-        <div className="">
-          <p>Tip Amount
-          / person</p>
-          <input type="number" placeholder="$0.00" value={tipByPeople} style={{fontSize: 30}} disabled/>
+        <div className="wp-total">
+          <div className="grid-total">
+            <h3 id="title-tip">Tip Amount <span>/ person</span></h3>
+            <input id="input-tip" className="input-total" type="text" placeholder="$0.00" value={"$" + tipByPeople} disabled/>
 
-          <p>Total
-          / person</p>
-          <input type="number" placeholder="$0.00" value={totalByPeople} style={{fontSize: 30}} disabled/>
-          <br /><br />
+            <h3 id="title-person">Total <span>/ person</span></h3>
+            <input id="input-person" className="input-total" type="text" placeholder="$0.00" value={"$" + totalByPeople} disabled/>
 
-          <input type="reset" value="Reset" onClick={() =>  handleReset()}/>
+            <input id="input-submit" type="reset" value="Reset" onClick={() =>  handleReset()}/>
+          </div>
         </div>  
 
       </div>
