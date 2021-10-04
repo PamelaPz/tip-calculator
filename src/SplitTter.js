@@ -65,7 +65,7 @@ function SplitTter() {
           </div>
 
           <h3>Number of People</h3>
-          <div className="form-input pb-2">
+          <div className="form-input pb-2 pb-sm-1">
             <div className="dollar icon-person"></div>
             <input type="number" placeholder="5" value={people} onChange={e => setPeople(e.target.value)}/>
           </div>
@@ -79,7 +79,9 @@ function SplitTter() {
             <h3 id="title-person">Total <span>/ person</span></h3>
             <input id="input-person" className="input-total" type="text" placeholder="$0.00" value={"$" + totalByPeople} disabled/>
 
-            <input id="input-submit" type="reset" value="Reset" onClick={() =>  handleReset()}/>
+            <div id="input-submit">
+              <input className="inputSubmit" type="reset" value="Reset" onClick={() =>  handleReset()}/>
+            </div>
           </div>
         </div>  
 
