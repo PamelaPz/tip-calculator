@@ -32,16 +32,13 @@
     border-top-right-radius: 1.8rem;
     overflow-x: hidden;
     padding: 2rem 1.5rem;
-    .wp-contentT {
-      padding: 0 .5rem;
-    }
-
+    
     h3 {
       font-size: .9rem;
       padding-bottom: .4rem;
       color: $dark_grayish_cyan;
     }
-
+    
     .form-input {
       width: 100%;
       height: fit-content;
@@ -68,6 +65,13 @@
       &::placeholder {
         color: $dark_grayish_cyan2;
       }
+      &:focus {
+        outline: none;
+        border: 2px solid $strong_cyan;
+      }
+    }
+    .wp-contentT {
+      padding: 0 .5rem;
     }
 
     .wrap-btns {
@@ -86,6 +90,10 @@
         &:nth-child(2), &:nth-child(4) {
           margin-left: .5rem;
         }
+        &:hover {
+          background-color: $light_grayish_cyan;
+          color: $very_dark_cyan;
+        }
       }
       .select {
         background-color: $strong_cyan;
@@ -103,6 +111,29 @@
         font-weight: bold;
         margin-bottom: .8rem;
       }
+    
+    }
+    .input-people {
+      h3 {
+        position: relative;
+        #alert-zero {
+          color: red;
+          font-size: .8rem;
+          font-weight: bold;
+          text-align: right;
+          position: absolute;
+          right: 0;
+          display: inline-block;
+        }
+      }
+      .form-input {
+        input {
+          border: 2px solid red !important;
+        }
+      }
+    }
+    .hidden {
+      display: none;
     }
 
     .wp-total {
@@ -141,6 +172,15 @@
             border-radius: 0.4rem;
             background-color: $strong_cyan;
             color: $very_dark_cyan;
+            &:disabled {
+              opacity: .3;
+              cursor: no-drop;
+              background-color: $strong_cyan;
+            }
+            &:hover:not([disabled]) {
+              background-color: $light_grayish_cyan;
+              color: $very_dark_cyan;
+            }
           }
         }
       }
@@ -173,9 +213,23 @@
   }
   .wp-full {
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+      padding: 0 0 4rem;
+      opacity: .8;
+      letter-spacing: 10px;
+      font-size: 1.5rem;
+      span {
+        display: block;
+      }
+    }
 
     .formCalculate {
-      width: 55%;
+      width: 65%;
       margin: auto;
       border-radius: 1.5rem;
       display: flex;
